@@ -1,0 +1,19 @@
+
+#board {
+	position: relative;
+    border:2px solid #000;
+	margin: 70px auto;
+}
+.square{
+    position: absolute;
+}
+.square.b{
+    background-color: #ccc;
+}
+.square.w{
+    background-color: #eee;
+}
+.piece {
+    position: absolute;
+    background-size: contain;
+}
