@@ -2,7 +2,7 @@
 
     window.app = window.app || {};
 
-    window.app.loadFEN = function(sFEN, selector, squareSize) {
+    window.app.loadFEN = function(sFEN, selector, squareSize, pieceSet) {
 
         var getPos = function(col) {
             var row = 0;
@@ -60,7 +60,7 @@
                     color = 'b';
                 }
 
-                piece.style.backgroundImage = 'url(images/pieces/' + curChar.toLowerCase() + color + '.png)';
+                piece.style.backgroundImage = 'url(images/pieces/' + pieceSet + '/' + color + curChar.toUpperCase() + '.svg)';
 
                 boardElt.appendChild(piece);
                 curCol++;
@@ -115,7 +115,15 @@ window.onload = function() {
         console.log('Message [' + event.senderId + ']: ' + event.data);
         // display the message from the sender
 
-        window.app.loadFEN(event.data, 'board', squareSize);
+        try {
+            // new version
+            var data = JSON.parse(event.data);
+            window.app.loadFEN(data.FEN, 'board', squareSize, data.pieceSet);
+        } catch {
+            // old version is just FEN string
+            window.app.loadFEN(event.data, 'board', squareSize, 'merida');
+        }
+
         window.castReceiverManager.setApplicationState(event.data);
 
         // inform all senders on the CastMessageBus of the incoming message event

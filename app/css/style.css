@@ -1,5 +1,5 @@
 body {
-	background-color: #484848;
+	background-color: #704d33;
 	color: #f1f1f1;
 	text-shadow: 2px 2px 2px #333333;
 	font-family: Arial, sans-serif;
@@ -20,8 +20,8 @@ p {
 	width: 1280px;
 	height: 720px;
 	overflow: hidden;
-    background-color: #484848;
-    background-image: url('../images/chess.png');
+    background-color: #704d33;
+    background-image: url('../images/logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
@@ -37,10 +37,10 @@ p {
     position: absolute;
 }
 .square.b{
-    background-color: #ccc;
+    background-color: #deac5d;
 }
 .square.w{
-    background-color: #eee;
+    background-color: #f9e3c0;
 }
 .piece {
     position: absolute;
