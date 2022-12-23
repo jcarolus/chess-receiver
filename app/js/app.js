@@ -44,7 +44,7 @@
         for (i = 0; i < fragments.length; i++) {
             var curChar = fragments.substr(i, 1);
 
-            if (curChar.match(/[A-Z]/i)) {
+            if (curChar.match(/[A-Z]/i) || curChar === '$') {
                 var boardPos = getPos(curCol);
                 var piece = document.createElement('div');
                 piece.style.top = (boardPos.row * squareSize) + 'px';
@@ -53,14 +53,19 @@
                 piece.style.height = squareSize + 'px';
                 piece.className = 'piece';
 
-                if (curChar.match(/[A-Z]/)) {
-                    color = 'w';
-                }
-                if (curChar.match(/[a-z]/)) {
-                    color = 'b';
-                }
+                if (curChar === '$') {
+                    piece.style.backgroundImage = 'url(images/pieces/duck.svg)';
+                } else {
 
-                piece.style.backgroundImage = 'url(images/pieces/' + pieceSet + '/' + color + curChar.toUpperCase() + '.svg)';
+                    if (curChar.match(/[A-Z]/)) {
+                        color = 'w';
+                    }
+                    if (curChar.match(/[a-z]/)) {
+                        color = 'b';
+                    }
+
+                    piece.style.backgroundImage = 'url(images/pieces/' + pieceSet + '/' + color + curChar.toUpperCase() + '.svg)';
+                }
 
                 boardElt.appendChild(piece);
                 curCol++;
